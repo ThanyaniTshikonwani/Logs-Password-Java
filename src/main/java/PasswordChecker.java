@@ -1,80 +1,66 @@
-    import org.apache.logging.log4j.LogManager;
-    import org.apache.logging.log4j.Logger;
-    import java.util.Scanner;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class PasswordChecker {
 
-    public class PasswordChecker {
+    public  static final Logger logger = LogManager.getLogger(PasswordChecker.class);
+        public static boolean passwordIsValid (String password) {
 
-        public  static final Logger logger = LogManager.getLogger(PasswordChecker.class);
+            String lowerCaseChars = "(.*[a-z].*)";
+            String numbers = "(.*[0-9].*)";
+            String specialCharacter = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?].*$)";
+            String upperCaseChars = "(.*[A-Z].*)";
 
-
-            // Password Validator run method
-            public static void main (String[] args) {
-
-                String rerun;
-                do {
-                    System.out.println("PASSWORD VALIDATOR");
-                    System.out.println("Password should be longer than than 8 characters\n" +
-                            "Password should have at least one lowercase letter\n" +
-                            "Password should have at least one uppercase letter\n" +
-                            "Password should at least have one digit\n" +
-                            "Password should have at least one special character\n");
-                    System.out.println("Please enter password :");
-                    Scanner input = new Scanner(System.in);
-                    String password = input.nextLine();
-                    passWordIsEmpty(password);
-                    passwordCheck(password);
-                    passWordIsOK(password);
-                    System.out.println("Type 'Yes' to Run Again or 'No' to Exit  ");
-                    rerun=input.nextLine();
-
-                }while (rerun.equalsIgnoreCase("Yes"));
+            if (password.isEmpty()){
+                System.out.println("Password Exist");
+            }
+            if (password.length() > 8) {
+            } else {
+//                System.err.println("Password should be longer than than 8 characters");
+//                logger.error("Password should be longer than than 8 characters");
+                logger.error("\"Password should be longer than than 8 characters\"");
+            }
+            if (password.matches(lowerCaseChars)) {
+            } else {
+                logger.error("Password should have at least one lowercase letter");
+            }
+            if (password.matches(upperCaseChars)) {
+            } else {
+                logger.error("Password should have at least one uppercase letter");
+            }
+            if (password.matches(numbers)) {
+            } else {
+                logger.error("Password should at least have one digit");
             }
 
-
-            public static  boolean passWordIsEmpty(String password){
-                if (password.isEmpty() | password.length() < 1){
-                    logger.error("No Password Was Inserted!");
-
-                }return true;
+            if (password.matches(specialCharacter)) {
+            } else {
+                logger.error("Password should have at least one special character");
             }
 
-            // Method That check if the password that meets all 6 conditions
-            public static boolean passwordCheck(String password) {
-
-                String lowerCaseChars = "(.*[a-z].*)";
-                String numbers = "(.*[0-9].*)";
-                String specialCharacter = "(.*[a-zA-Z0-9].*)";
-                String upperCaseChars = "(.*[A-Z].*)";
-
-
-                // Function that check if the password meets the required
-                if (password.length() > 8 && password.matches(numbers) && password.matches(specialCharacter)
-                        && password.matches(lowerCaseChars) && password.matches(upperCaseChars) ) {
-                    logger.info("User Password is Valid!");
-
-                } else if (password.length() > 8 && !password.matches(numbers) && !password.matches(specialCharacter)
-                        && !password.matches(lowerCaseChars) && !password.matches(upperCaseChars)){
-                    logger.error("Invalid Password!");
-                }
-                return true;
+            if (password.length() > 8 && password.matches(lowerCaseChars) && password.matches(upperCaseChars)
+                    && password.matches(numbers) && password.matches(specialCharacter) == true){
+                logger.info("Password is Valid");
+            } else {
+//                System.err.println("Invalid Password");
             }
 
+            return false;
+        }
+        public static boolean passwordIsOk (String password) {
 
-            // Method That check if the password that meets 3 conditions
-            public static boolean  passWordIsOK(String password){
+            String lowerCaseChars = "(.*[a-z].*)";
+            String numbers = "(.*[0-9].*)";
+            String specialCharacter = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?].*$)";
+            String upperCaseChars = "(.*[A-Z].*)";
+            if (password.length() > 8 && password.matches(lowerCaseChars) | password.matches(upperCaseChars)
+                    && password.matches(numbers) | password.matches(specialCharacter) == true){
+                System.out.println("Password is OK");
+                logger.info("Password is Ok");
 
-                String lowerCaseChars = "(.*[a-z].*)";
-                String numbers = "(.*[0-9].*)";
-                String specialCharacter = "(.*[a-zA-Z0-9].*)";
-                String upperCaseChars = "(.*[A-Z].*)";
-
-                if (password.length() > 8 || password.matches(lowerCaseChars) && password.matches(specialCharacter)
-                        && password.matches(numbers) && password.matches(upperCaseChars)) {
-                        logger.info("User Password is Ok!");
-                } else{
-                        logger.debug("Invalid Password!");
-
-                }return true;
+            }else {
+                logger.debug("Password doesnt meet any 3 conditions");
             }
-    }
+            return false;
+        }
+}

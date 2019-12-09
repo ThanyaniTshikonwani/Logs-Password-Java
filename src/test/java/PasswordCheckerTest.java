@@ -2,20 +2,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PasswordCheckerTest  {
+class PasswordCheckerTest {
 
     @Test
-    void passWordIsEmpty() {
-        assertTrue(PasswordChecker.passWordIsEmpty(" "));
+    void passwordIsValid() {
+        assertFalse(PasswordChecker.passwordIsValid("Umuzorg#09"));
     }
 
     @Test
-    void passwordCheck() {
-        assertTrue(PasswordChecker.passwordCheck("Thanyani419381293%*"));
-    }
-
-    @Test
-    void passWordIsOK() {
-        assertTrue(PasswordChecker.passWordIsEmpty("Thannuasdu38780@"));
+    void passwordIsOk() {
+        assertFalse(PasswordChecker.passwordIsOk("Umusdffwe"));
     }
 }
