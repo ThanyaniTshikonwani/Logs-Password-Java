@@ -1,0 +1,4 @@
+[ERROR] 2019-12-09 10:25:17.495 [main] PasswordChecker - "Password should be longer than than 8 characters"
+[ERROR] 2019-12-09 10:25:17.498 [main] PasswordChecker - Password should have at least one uppercase letter
+[ERROR] 2019-12-09 10:25:17.498 [main] PasswordChecker - Password should at least have one digit
+[ERROR] 2019-12-09 10:25:17.499 [main] PasswordChecker - Password should have at least one special character
