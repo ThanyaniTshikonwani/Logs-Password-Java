@@ -11,6 +11,6 @@ class PasswordCheckerTest {
 
     @Test
     void passwordIsOk() {
-        assertFalse(PasswordChecker.passwordIsOk("Umusdffwe"));
+        assertFalse(PasswordChecker.passwordIsOk("Umusd(ffwe"));
     }
 }
