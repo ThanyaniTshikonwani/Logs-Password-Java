@@ -49,11 +49,11 @@ public class PasswordChecker {
 
             String lowerCaseChars = "(.*[a-z].*)";
             String numbers = "(.*[0-9].*)";
-            String specialCharacter = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?].*$)";
+            String specialCharacter = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},,|,;,:,<,>,/,?].*$)";
             String upperCaseChars = "(.*[A-Z].*)";
+
             if (password.length() > 8 && password.matches(lowerCaseChars) | password.matches(upperCaseChars)
                     && password.matches(numbers) | password.matches(specialCharacter) == true){
-                System.out.println("Password is OK");
                 logger.info("Password is Ok");
 
             }else {

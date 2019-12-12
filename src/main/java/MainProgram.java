@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class MainProgram {
 
     public static void main (String[] args) {
         String rerun;
@@ -14,8 +14,10 @@ public class Main {
             System.out.println("Please enter password :");
             Scanner input = new Scanner(System.in);
             String password = input.nextLine();
+
             PasswordChecker.passwordIsOk(password);
             PasswordChecker.passwordIsValid(password);
+
             System.out.println("Type 'Yes' to Run Again or 'No' to Exit  ");
             rerun=input.nextLine();
         }while (rerun.equalsIgnoreCase("Yes"));
